@@ -130,7 +130,7 @@ void WS2812FX::show(void) {
   if(customShow == NULL) {
     Adafruit_NeoPixel::show();
   } else {
-    customShow();
+    customShow(*this);
   }
 }
 
@@ -1621,6 +1621,6 @@ uint8_t WS2812FX::setCustomMode(uint8_t index, const __FlashStringHelper* name, 
 /*
  * Custom show helper
  */
-void WS2812FX::setCustomShow(void (*p)()) {
+void WS2812FX::setCustomShow(void (*p)(WS2812FX&)) {
   customShow = p;
 }

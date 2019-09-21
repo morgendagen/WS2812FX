@@ -426,7 +426,7 @@ class WS2812FX : public Adafruit_NeoPixel {
       setMode(uint8_t seg, uint8_t m),
       setOptions(uint8_t seg, uint8_t o),
       setCustomMode(uint16_t (*p)()),
-      setCustomShow(void (*p)()),
+      setCustomShow(void (*p)(WS2812FX&)),
       setSpeed(uint16_t s),
       setSpeed(uint8_t seg, uint16_t s),
       increaseSpeed(uint8_t s),
@@ -595,7 +595,7 @@ class WS2812FX : public Adafruit_NeoPixel {
       []{ return (uint16_t)1000; },
       []{ return (uint16_t)1000; }
     };
-    void (*customShow)(void) = NULL;
+    void (*customShow)(WS2812FX&) = NULL;
 
     boolean
       _running,
